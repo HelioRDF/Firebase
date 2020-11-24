@@ -30,3 +30,35 @@ Necessário incluir:
  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   dentro do main.dart
+
+
+
+  void main() async {
+
+    Firestore db = Firestore.instance;
+
+    var pesquisa = "ana";
+    QuerySnapshot querySnapshot = await db.collection("usuarios")
+    //.where("nome", isEqualTo: "jamilton")
+    //.where("idade", isEqualTo: 31)
+    //.where("idade", isGreaterThan: 15)//< menor, > maior, >= maior ou igual, <= menor ou igual
+    //.where("idade", isLessThan: 30)
+    //descendente (do maior para o menor) ascendente (do menor para o maior)
+    //.orderBy("idade", descending: true )
+    //.orderBy("nome", descending: false )
+    //.limit(1)
+    //m  m
+    //10...15
+    .where("nome", isGreaterThanOrEqualTo: pesquisa)
+    .where("nome", isLessThanOrEqualTo: pesquisa + "\uf8ff" )
+    .getDocuments();
+
+    for( DocumentSnapshot item in querySnapshot.documents ){
+      var dados = item.data;
+      print("filtro nome: ${dados["nome"]} idade: ${dados["idade"]}");
+    }
+
+
+    runApp(App());
+
+  }
