@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 void main() async {
 //fireStore.testarFireStore();
-  authFirebase.criarConta();
+  authFirebase.teste();
   runApp(MaterialApp(
     home: App(),
   ));
