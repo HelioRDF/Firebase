@@ -7,10 +7,10 @@ class authFirebase {
   static String email = "heliordf@hotmail.com";
   static String senha = "123456";
 
-
   static void teste() async {
     await iniciarFirebaseAuth();
-    await logout();
+    await login();
+    //await logout();
     verificarSessao();
   }
 
